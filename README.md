@@ -1,24 +1,20 @@
-# vue-guide
+# Draw-Match-App-Vue.js
+The code was written in Visual Studio Code
 
 ## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+## Compiles and hot-reloads for development
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
+## Used Axios to call API / To add axios to the project
 ```
-npm run build
+npm install axios
 ```
-
-### Lints and fixes files
+## To add Bootstrap to the project
 ```
-npm run lint
+npm i bootstrap@5.2.0
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
