@@ -12,7 +12,8 @@
     "bootstrap": "^5.2.0",
     "bootstrap-vue": "^2.22.0",
     "core-js": "^3.8.3",
-    "vue": "^3.2.37"
+    "sweetalert2": "^11.4.29",
+    "vue": "^3.2.38"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
