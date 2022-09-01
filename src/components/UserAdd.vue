@@ -23,7 +23,14 @@
   <div class="p-3 mb-2 bg-dark text-white" v-if="controllerAddUser">
   <div id="addForm">
     <h2 @click="controllerAddUser=!controllerAddUser">Add User</h2><br>
-    <form @submit="handleAdd">
+    <form @submit="handleAdd" novalidate="true" method="post">
+      <p v-if="errors.length">
+        <b>Please correct the following error(s):</b>
+        <ul>
+          <li v-for="error in errors" :key="error.index" >{{ error }}</li>
+        </ul>
+      </p>
+
     <div class="row g-3">
       <div class="col">
         <input
@@ -169,10 +176,11 @@ export default {
       controllerShowUsers:false,
       controllerAddUser:false,
       user: {
-        name: "",
-        surname: "",
+        name: '',
+        surname: '',
         id: "",
       },
+      errors: [],
       userlist:[], 
       drawList:[
       ],
@@ -186,6 +194,19 @@ export default {
       console.log(this.user.userName);
       this.count=this.count+1
       this.userlist.push({name:this.user.userName,surname:this.user.userSurname,id:this.count})
+    },
+    checkForm: function (e) {
+      
+      this.errors = [];
+
+      if (this.user.name === '') {
+        this.errors.push('User name is required.');
+      }
+      if (this.user.name === '') {
+        this.errors.push('User name is required.');
+      }
+
+      e.preventDefault();
     },
     ShowDraw(){
         this.controllerDraw=1;
