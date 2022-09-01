@@ -19,17 +19,13 @@
     <br><br><br><br><br>
 
 
+
   <button  class="button1"  type="button" @click="controllerAddUser=!controllerAddUser" >ADD USER</button><br><br>
-  <div class="p-3 mb-2 bg-dark text-white" v-if="controllerAddUser">
+  <div class="p-3 mb-2 " v-if="controllerAddUser">
   <div id="addForm">
     <h2 @click="controllerAddUser=!controllerAddUser">Add User</h2><br>
     <form @submit="handleAdd" novalidate="true" method="post">
-      <p v-if="errors.length">
-        <b>Please correct the following error(s):</b>
-        <ul>
-          <li v-for="error in errors" :key="error.index" >{{ error }}</li>
-        </ul>
-      </p>
+      
 
     <div class="row g-3">
       <div class="col">
@@ -60,7 +56,7 @@
   </div><br><br>
 
   <div v-if="controllerShowUsers">
-    <table  class="table table-light table-striped text-dark" >
+    <table  class="table " >
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -84,11 +80,11 @@
     <div class="col">
       <button class="button1 " @click="ShowDraw()">DRAW</button>
       <br><br><br>
-      <div class="p-3 mb-2 bg-dark text-white" v-if="controllerDraw==1">
+      <div  v-if="controllerDraw==1">
         <div v-if="controllerDraw==1">
           <button @click="ShowDraw()" class="btn btn-light">Draw</button>&nbsp;
           <button @click="controllerDraw=0" class="btn btn-outline-light">Clear</button>
-          <table class="table table-dark table-striped text-white" >
+          <table class="table" >
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -105,7 +101,9 @@
                 <td>{{item.choserUser.id}}</td>
                 <td>{{ item.choserUser.name }}</td>
                 <td>{{item.choserUser.surname}}</td>
-                <td>----></td>
+                <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                </svg></td>
                 <td>{{item.chosenUser.id}}</td>
                 <td>{{ item.chosenUser.name }}</td>
                 <td>{{item.chosenUser.surname}}</td>
@@ -120,16 +118,17 @@
       
       <button class="button1 " @click="ShowMatch()">MATCH</button>
       <br><br><br>
-      <div class="p-3 mb-2 bg-dark text-white" v-if="controllerMatch==1">
+      <div v-if="controllerMatch==1">
         <div v-if="controllerMatch==1">
           <button @click="ShowMatch()" class="btn btn-light" >Match</button>&nbsp;
           <button @click="controllerMatch=0;" class="btn btn-outline-light">Clear</button>
-          <table class="table table-dark table-striped text-white">
+          <table class="table">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">First name</th>
                 <th scope="col">Last name</th>
+                <th scope="col"></th>
                 <th scope="col">#</th>
                 <th scope="col">First name</th>
                 <th scope="col">Last name</th>
@@ -140,6 +139,10 @@
                 <td>{{item.firstUser.id}}</td>
                 <td>{{ item.firstUser.name }}</td>
                 <td>{{item.firstUser.surname}}</td>
+                <td v-if="item.secondUser.id!=0"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+                </svg></td>
+                <td v-else-if="item.secondUser.id==0"></td>
                 <td v-if="item.secondUser.id!=0">{{item.secondUser.id}}</td>
                 <td v-else-if="item.secondUser.id==0"></td>
                 <td v-if="item.secondUser.id!=0">{{ item.secondUser.name }}</td>
@@ -190,6 +193,7 @@ export default {
   },
   methods: {
     handleAdd(e) {
+      
       e.preventDefault()
       console.log(this.user.userName);
       
@@ -281,4 +285,11 @@ export default {
   transform: translateY(4px);
 }
 
+
+th {
+  background-color: #555273;
+  color: white;
+}
+tr:nth-child(even) {background-color: #65799b; color:white;}
+tr:nth-child(odd) {background-color: #e2eff1; color:#555273;}
 </style>
