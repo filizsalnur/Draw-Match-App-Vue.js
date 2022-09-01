@@ -162,9 +162,9 @@
 
 </template>
 
-<script>
+<script >
 import axios from 'axios';
-
+import Swal from 'sweetalert2'
 export default {
   name: "user-add",
 
@@ -176,8 +176,8 @@ export default {
       controllerShowUsers:false,
       controllerAddUser:false,
       user: {
-        name: '',
-        surname: '',
+        name: null,
+        surname: null,
         id: "",
       },
       errors: [],
@@ -193,7 +193,34 @@ export default {
       e.preventDefault()
       console.log(this.user.userName);
       this.count=this.count+1
+      if (this.user.userName && this.user.userSurname) {
+        return true;
+      }
       this.userlist.push({name:this.user.userName,surname:this.user.userSurname,id:this.count})
+      if (!this.user.userName) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Name required!',
+          footer: 'Please enter a valid name'
+        })
+      }
+      if (!this.user.userSurname) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Surname required!',
+          footer: 'Please enter a valid surname'
+        })
+      }
+      if (!this.user.userName && !this.user.userSurname) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Name and Surname required!',
+          footer: 'Please enter a valid name and surname'
+        })
+      }
     },
     checkForm: function (e) {
       
@@ -218,9 +245,6 @@ export default {
         axios.post("https://localhost:5001/api/Person/Matching",this.userlist).then(responses =>this.matchList=responses.data)
         
     },
-    Search(){
-
-    }
     },
 };
 </script>
