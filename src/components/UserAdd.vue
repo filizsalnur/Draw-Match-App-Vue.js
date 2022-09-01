@@ -192,11 +192,13 @@ export default {
     handleAdd(e) {
       e.preventDefault()
       console.log(this.user.userName);
-      this.count=this.count+1
+      
       if (this.user.userName && this.user.userSurname) {
+        this.count=this.count+1
+        this.userlist.push({name:this.user.userName,surname:this.user.userSurname,id:this.count})
         return true;
       }
-      this.userlist.push({name:this.user.userName,surname:this.user.userSurname,id:this.count})
+      
       if (!this.user.userName) {
         Swal.fire({
           icon: 'error',
