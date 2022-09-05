@@ -1,6 +1,5 @@
 <template>
   <UserAdd/>
-  
 </template>
 
 <script>
@@ -11,6 +10,7 @@ export default {
   name: 'App',
   components: {
     UserAdd,
+
 }
 }
 </script>
