@@ -138,6 +138,8 @@
                 </tr>
               </tbody>
             </table>
+            <br><br>
+            <button type="button" class="btn btn-success" @click="SaveDrawData">Export to Excel</button>
           </div>
         </div>
       </div>
@@ -200,24 +202,27 @@
                   <td v-else-if="item.secondUser.id == 0"></td>
                 </tr>
               </tbody>
-            </table>
+            </table><br><br>
+            <button type="button" class="btn btn-success" @click="SaveMatchData">Export to Excel</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-
+  
   <div class="position-static bottom-0 end-0">
     <img alt="Tree" src="./tree.png" class="image" />
   </div>
+ 
 </template>
 
 <script >
 import axios from "axios";
 import Swal from "sweetalert2";
+import excelMatchExport from "@/Tools/ExcelMatchExporter.js"
+import excelDrawExport from "@/Tools/ExcelDrawExporter.js"
 export default {
   name: "user-add",
-
   data() {
     return {
       count: 0,
@@ -301,6 +306,32 @@ export default {
       axios
         .post("https://localhost:5001/api/Person/Matching", this.userlist)
         .then((responses) => (this.matchList = responses.data));
+    },
+   async SaveMatchData(){
+
+      let data = JSON.parse(JSON.stringify(this.matchList));
+      let bufferObj=await excelMatchExport.ExportFile(data)
+      const blob = new Blob([bufferObj],{type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,"});
+  
+      // Programatically create a link and click it:
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `Matched_Users.xlsx`;
+      a.click();
+      a.remove();
+    },
+    async SaveDrawData(){
+
+      let data = JSON.parse(JSON.stringify(this.drawList));
+      let bufferObj=await excelDrawExport.ExportFile(data)
+      const blob = new Blob([bufferObj],{type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,"});
+  
+      // Programatically create a link and click it:
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `Drawed_Users.xlsx`;
+      a.click();
+      a.remove();
     },
   },
 };
