@@ -250,8 +250,8 @@ export default {
         this.count = this.count + 1;
         this.controllerShowUsers = true
         this.userlist.push({
-          name: this.user.userName,
-          surname: this.user.userSurname,
+          name: this.user.userName.charAt(0).toUpperCase() + this.user.userName.slice(1),
+          surname: this.user.userSurname.charAt(0).toUpperCase() + this.user.userSurname.slice(1),
           id: this.count,
         });
         return true;
@@ -333,6 +333,7 @@ export default {
       a.click();
       a.remove();
     },
+  
   },
 };
 </script>
