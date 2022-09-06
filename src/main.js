@@ -8,10 +8,11 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import Help from './components/Help.vue';
 import UserAdd from './components/UserAdd.vue';
 
+//router definition processes
 const router = createRouter({
     history: createWebHashHistory(),
     routes: [
-      { path: '/test', component: UserAdd }, // our-domain.com/teams => TeamsList
+      { path: '/', component: UserAdd }, // our-domain.com/teams => TeamsList
       { path: '/help', component: Help },
     ]
   });

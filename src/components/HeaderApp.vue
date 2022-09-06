@@ -8,7 +8,7 @@
       </div>
       <div class="container-fluid">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><router-link to="/test">Home</router-link></li>
+          <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
           <li class="breadcrumb-item active"><router-link to="/Help">Help</router-link></li>
         </ol>
         
