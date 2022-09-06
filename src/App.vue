@@ -1,15 +1,17 @@
 <template>
-  <UserAdd/>
+  <HeaderApp/>
+  <main><router-view></router-view></main>
+  
 </template>
 
 <script>
-import UserAdd from './components/UserAdd.vue';
+import HeaderApp from './components/HeaderApp.vue'
 
 
 export default {
   name: 'App',
   components: {
-    UserAdd,
+   HeaderApp,
 
 }
 }

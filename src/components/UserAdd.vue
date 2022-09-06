@@ -1,25 +1,4 @@
-
-
 <template>
-  <nav class="navbar navbar-expand-lg bg-light fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img alt="Eldor logo" src="./logo.png" style="height: 120px" />
-        <b>Match & Draw App</b>
-      </a>
-    </div>
-    <div class="container-fluid">
-      <form class="d-flex" role="search" @submit="Search()">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
   <br /><br /><br /><br /><br />
 
   <button
@@ -333,7 +312,7 @@ export default {
       a.click();
       a.remove();
     },
-  
+    
   },
 };
 </script>
