@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg bg-light fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img alt="Eldor logo" src="./logo.png" style="height: 120px" />
+          <img alt="Eldor logo" src="@/photos/logo.png" style="height: 120px" />
           <b>Match & Draw App</b>
         </a>
       </div>

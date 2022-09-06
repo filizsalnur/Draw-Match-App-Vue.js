@@ -190,7 +190,7 @@
   </div>
   
   <div class="position-static bottom-0 end-0">
-    <img alt="Tree" src="./tree.png" class="image" />
+    <img alt="Tree" src="@/photos/tree.png" class="image" />
   </div>
  
 </template>
