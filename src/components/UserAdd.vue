@@ -1,5 +1,5 @@
 <template>
-  <br /><br /><br /><br /><br />
+  <br /><br /><br />
 
   <button
     class="button1"
@@ -71,7 +71,7 @@
     <div class="row">
       <div class="col">
         <button class="button1" @click="ShowDraw()">DRAW</button>
-        <br /><br /><br />
+        <br /><br />
         <div v-if="controllerDraw == 1">
           <div v-if="controllerDraw == 1">
             <button @click="ShowDraw()" class="btn btn-light">Draw</button
@@ -126,7 +126,7 @@
 
       <div class="col">
         <button class="button1" @click="ShowMatch()">MATCH</button>
-        <br /><br /><br />
+        <br /><br />
         <div v-if="controllerMatch == 1">
           <div v-if="controllerMatch == 1">
             <button @click="ShowMatch()" class="btn btn-light">Match</button
